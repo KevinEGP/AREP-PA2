@@ -10,7 +10,7 @@ function log(){
       // console.log(JSON.parse(data));
       res = JSON.parse(data);
       console.log(res);
-      $(`#result`).text('El resultado es: ' + res.output);
+      $(`#result`).text('El resultado es: ' + res);
     },
     error: function(error) {
       $(`#result`).text('Se produjo un error');
@@ -27,7 +27,7 @@ function cos(){
       // console.log(JSON.parse(data));
       res = JSON.parse(data);
       console.log(res);
-      $(`#result`).text('El resultado es: ' + res.output);
+      $(`#result`).text('El resultado es: ' + res);
     },
     error: function(error) {
       $(`#result`).text('Se produjo un error');
