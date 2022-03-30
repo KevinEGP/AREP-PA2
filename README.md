@@ -7,7 +7,7 @@ Se deben cambiar los direcciones de las maquinas en las siguentes images
 
 
 ![Alt text](/imgimg.png)
-![direcciones](/img/Screenshot from 2022-03-30 17-51-37.png)
+![direcciones]("/img/Screenshot from 2022-03-30 17-51-37.png")
 
 
 Este es el video donde se ve el funcionamiento
