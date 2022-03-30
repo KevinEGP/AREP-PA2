@@ -15,12 +15,14 @@ public class ProxyServer {
         port(getPort());
         staticFiles.location("/public");
         get("/", "text/html", (req, res) -> {
+            System.out.println("Petición recibida " + req.url());
             res.redirect("index.html");            
             return null;
         });
         
         get("/log", (req, res) -> {
             Integer value = Integer.parseInt(req.queryParams("value"));
+            System.out.println("Petición recibida " + req.url() + ", con párametro " + value);
             try {
                 HttpResponse<String> response = Unirest.get(servers[currentServer] + "/log").header("accept", "application/json").queryString("value", value.toString()).asString();
                 changeServer();
@@ -34,6 +36,7 @@ public class ProxyServer {
 
         get("/cos", (req, res) -> {
             Integer value = Integer.parseInt(req.queryParams("value"));
+            System.out.println("Petición recibida " + req.url() + ", con párametro " + value);
             try {
                 HttpResponse<String> response = Unirest.get(servers[currentServer] + "/cos").header("accept", "application/json").queryString("value", value.toString()).asString();
                 changeServer();
@@ -50,7 +53,7 @@ public class ProxyServer {
         if (System.getenv("PORT") != null) {
         return Integer.parseInt(System.getenv("PORT"));
         }
-        return 3500;
+        return 8080;
     }
 
     private static void changeServer() {

@@ -11,12 +11,14 @@ public class MathService {
         get("/log", (req, res) -> {
             Double value = Double.parseDouble(req.queryParams("value"));
             Double result = getLog(value);
+            System.out.println("Petición recibida " + req.url() + ", con párametro " + value);
             return gson.toJson(result);
         });
 
         get("/cos", (req, res) -> {
             Double value = Double.parseDouble(req.queryParams("value"));
             Double result = getCos(value);
+            System.out.println("Petición recibida " + req.url() + ", con párametro " + value);
             return gson.toJson(result);
         });
     }
