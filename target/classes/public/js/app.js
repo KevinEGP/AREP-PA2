@@ -1,5 +1,5 @@
 const host = `http://localhost`;
-const port = 3500
+const port = 80
 
 function log(){
   let value =  $(`#value`).val();
