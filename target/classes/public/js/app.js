@@ -10,10 +10,12 @@ function log(){
       // console.log(JSON.parse(data));
       res = JSON.parse(data);
       console.log(res);
-      $(`#result`).text('El resultado es: ' + res);
+      $(`#operation`).text('Operación: ' + res.operation);
+      $(`#input`).text('Valor: ' + res.input);
+      $(`#output`).text('Resultado: ' + res.output);
     },
     error: function(error) {
-      $(`#result`).text('Se produjo un error');
+      $(`#output`).text('Se produjo un error');
     }
   })
 }
@@ -27,10 +29,12 @@ function cos(){
       // console.log(JSON.parse(data));
       res = JSON.parse(data);
       console.log(res);
-      $(`#result`).text('El resultado es: ' + res);
+      $(`#operation`).text('Operación: ' + res.operation);
+      $(`#input`).text('Valor: ' + res.input);
+      $(`#output`).text('Resultado: ' + res.output);
     },
     error: function(error) {
-      $(`#result`).text('Se produjo un error');
+      $(`#output`).text('Se produjo un error');
     }
   })
 }
