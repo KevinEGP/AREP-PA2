@@ -1,4 +1,4 @@
-const host = `http://ec2-34-226-124-23.compute-1.amazonaws.com`;
+const host = `http://18.233.100.251`;
 const port = 8080
 
 function log(){
