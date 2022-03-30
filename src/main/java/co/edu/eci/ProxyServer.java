@@ -9,9 +9,8 @@ import kong.unirest.Unirest;
 
 public class ProxyServer {
     
-    private static int[] serversPorts = {35000};
+    private static String[] servers = {"http://54.174.254.11:35000", "http://3.91.183.51:35000"};
     private static int currentServer = 0;
-    private static String url = "http://localhost:";
     public static void main( String[] args ) {
         port(getPort());
         staticFiles.location("/public");
@@ -23,7 +22,7 @@ public class ProxyServer {
         get("/log", (req, res) -> {
             Integer value = Integer.parseInt(req.queryParams("value"));
             try {
-                HttpResponse<String> response = Unirest.get(url + serversPorts[currentServer] + "/log").header("accept", "application/json").queryString("value", value.toString()).asString();
+                HttpResponse<String> response = Unirest.get(servers[currentServer] + "/log").header("accept", "application/json").queryString("value", value.toString()).asString();
                 changeServer();
                 return response.getBody();
             } catch (Exception e) {
@@ -36,7 +35,7 @@ public class ProxyServer {
         get("/cos", (req, res) -> {
             Integer value = Integer.parseInt(req.queryParams("value"));
             try {
-                HttpResponse<String> response = Unirest.get(url+ serversPorts[currentServer] + "/cos").header("accept", "application/json").queryString("value", value.toString()).asString();
+                HttpResponse<String> response = Unirest.get(servers[currentServer] + "/cos").header("accept", "application/json").queryString("value", value.toString()).asString();
                 changeServer();
                 return response.getBody();
             } catch (Exception e) {
@@ -55,20 +54,7 @@ public class ProxyServer {
     }
 
     private static void changeServer() {
-        currentServer = (currentServer + 1) % serversPorts.length;
-    }
-
-    private static boolean isServerActive() {
-        boolean active = false;
-        while (!active) {
-            try (Socket socket = new Socket()) {
-                socket.connect(new InetSocketAddress("0.0.0.0", serversPorts[currentServer]), 500);
-                active = true;
-            } catch (IOException e) {
-                active = false;
-                changeServer();
-            }
-        }
-        return active;
+        System.out.println("Petición enviada a " + servers[currentServer]);
+        currentServer = (currentServer + 1) % servers.length;
     }
 }
