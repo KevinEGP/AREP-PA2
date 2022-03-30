@@ -9,7 +9,7 @@ import kong.unirest.Unirest;
 
 public class ProxyServer {
     
-    private static String[] servers = {"http://54.174.254.11:35000", "http://3.91.183.51:35000"};
+    private static String[] servers = {"http://54.165.224.16:35000", "http://3.87.47.22:35000"};
     private static int currentServer = 0;
     public static void main( String[] args ) {
         port(getPort());
